@@ -126,9 +126,6 @@ class ColorationGraphe {
     }
 
     // Algorithme DSatur
-    /**
-     * 
-     */
     public void colorationDSatur() {
         // Stocke la saturation (nombre de voisins coloriés) de chaque sommet
         Map<Integer, Integer> saturation = new HashMap<>();
@@ -161,7 +158,7 @@ class ColorationGraphe {
     }
 
     // Méthode pour enregistrer le graphe produit dans un fichier csv à ouvrir avec Cytoscape
-    public void enregistrerGrapheDansCSV(String nomFichier) {
+    /*public void enregistrerGrapheDansCSV(String nomFichier) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(nomFichier))) {
             // Entête
             writer.write("Sommet,Couleur,AttributCouleur\n");
@@ -174,105 +171,9 @@ class ColorationGraphe {
         } catch (IOException e) {
             System.out.println("Erreur lors de l'enregistrement du fichier : " + e.getMessage());
         }
-    }
-
-    // Méthode pour générer un graphe aléatoire 
-    /* public static Map<Integer, List<Integer>> genererGrapheAleatoire(int nombreSommets) {
-        Random random = new Random();
-        Map<Integer, List<Integer>> graphe = new HashMap<>();
-
-        // Créé les sommets (initialisation de la liste d'adjacence)
-        for (int i = 0; i < nombreSommets; i++) {
-            graphe.put(i, new ArrayList<>());
-        }
-
-        // Créé un graphe en ajoutant des arêtes sans former de cycle
-        Set<Integer> sommetsAjoutes = new HashSet<>();
-        sommetsAjoutes.add(0); // Ajouter le sommet 0 par défaut
-        for (int i = 1; i < nombreSommets; i++) {
-            // Choisit un sommet déjà ajouté pour connecter le nouveau sommet
-            int sommetPrecedent = random.nextInt(i); // sommet existant dans le graphe
-            graphe.get(sommetPrecedent).add(i);
-            graphe.get(i).add(sommetPrecedent);
-            sommetsAjoutes.add(i);
-        }
-
-        return graphe; // Retourne le graphe généré
     }*/
- 
-
-    public static Map<Integer, List<Integer>> genererGrapheAleatoire(int nombreSommets) {
-        Random random = new Random();
-        Map<Integer, List<Integer>> graphe = new HashMap<>();
-
-        // Créé les sommets
-        for (int i = 0; i < nombreSommets; i++) {
-            graphe.put(i, new ArrayList<>());
-        }
-
-        Set<Integer> sommetsAjoutes = new HashSet<>();
-        sommetsAjoutes.add(0); // Ajouter le sommet 0 par défaut
-        // Crée un graphe plus dense (ajoute plus d'arêtes)
-        for (int i = 0; i < nombreSommets; i++) {
-            for (int j = i + 1; j < nombreSommets; j++) {
-                if (random.nextBoolean()) { // Ajoute une arête avec une certaine probabilité
-                    graphe.get(i).add(j);
-                    graphe.get(j).add(i);
-                    sommetsAjoutes.add(i);
-                }
-            }
-        }
-
-        return graphe;
-    }
-    public static void main(String[] args) {
-        Random random = new Random();
-
-        // Générer un nombre aléatoire de sommets 
-        int nombreSommets = 2 + random.nextInt(5); 
-        
-        // Générer un graphe aléatoire
-        Map<Integer, List<Integer>> graphe = genererGrapheAleatoire(nombreSommets);
-
-        // Renvoie dans la console les résultat de la génération
-        System.out.println("Nombre de sommets : " + nombreSommets);
-        System.out.println("Graphe généré : " + graphe);
-
-        // Initialise le graphe de travail
-        ColorationGraphe cg;
-        cg = new ColorationGraphe(graphe);
-
-        // Applique la coloration backtracking
-        System.out.println("\nColoration Backtracking:");
-        if (cg.colorationBacktracking(0, 3)) { // nombre de couleru autorisée initialisé à 10 puisqu'on travaille avec un graphe aléatoire
-            cg.enregistrerGrapheDansCSV("graphe_backtracking.csv");
-        } else {
-            System.out.println("Aucune solution trouvée");
-        }
-
-        // Applique la coloration First Fit
-        System.out.println("\nColoration First Fit:");
-        cg.colorationFirstFit();
-        cg.enregistrerGrapheDansCSV("graphe_first_fit.csv");
-    
-        
-        // Test coloration Largest First
-        System.out.println("\nColoration Largest First:");
-        cg.colorationLargestFirst();
-        cg.enregistrerGrapheDansCSV("graphe_largest_first.csv");
-
-        // Test coloration Smallest Last
-        System.out.println("\nColoration Smallest Last:");
-        cg.colorationSmallestLast();
-            cg.enregistrerGrapheDansCSV("graphe_smallest_last.csv");
-
-        // Test coloration DSatur
-        System.out.println("\nColoration DSatur:");
-        cg.colorationDSatur();
-        cg.enregistrerGrapheDansCSV("graphe_dsatur.csv");
-    }
 }
-
+ 
 // Réponses aux questions 
 /*
  * Jusqu’à combien de nœuds pouvons-nous trouver la solution optimale ?
