@@ -37,7 +37,7 @@ class GraphePanel extends JPanel {
 
 
         Random random = new Random();
-        int sommet = 2 + random.nextInt(5);
+        int sommet = 12 + random.nextInt(5);
 
         JButton generer = new JButton("Générer le graphe");
         JButton backtracking = new JButton("Méthode backtracking");

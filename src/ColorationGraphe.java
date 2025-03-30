@@ -158,7 +158,7 @@ class ColorationGraphe {
     }
 
     // Méthode pour enregistrer le graphe produit dans un fichier csv à ouvrir avec Cytoscape
-    /*public void enregistrerGrapheDansCSV(String nomFichier) {
+    public void enregistrerGrapheDansCSV(String nomFichier) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(nomFichier))) {
             // Entête
             writer.write("Sommet,Couleur,AttributCouleur\n");
@@ -171,23 +171,6 @@ class ColorationGraphe {
         } catch (IOException e) {
             System.out.println("Erreur lors de l'enregistrement du fichier : " + e.getMessage());
         }
-    }*/
+    }
 }
  
-// Réponses aux questions 
-/*
- * Jusqu’à combien de nœuds pouvons-nous trouver la solution optimale ?
- * → Cela dépend du graphe, mais l’algorithme exact (backtracking) devient
- * impraticable pour des graphes au-delà de 30-40 sommets en raison de sa
- * complexité exponentielle.
- * 
- * Performance des méthodes approximatives sur de plus gros graphes ?
- * → Les méthodes heuristiques (DSatur, First Fit, etc.) sont plus rapides et
- * peuvent colorier des graphes de plusieurs centaines de sommets en un temps
- * raisonnable, mais elles peuvent produire des solutions sous-optimales.
- * 
- * En bonus : test avec une grille de Sudoku ?
- * → Un Sudoku peut être vu comme un graphe où chaque case est un sommet et
- * chaque contrainte (ligne, colonne, région) définit les arêtes. Un solveur de
- * Sudoku via coloration de graphe est envisageable !
- */
