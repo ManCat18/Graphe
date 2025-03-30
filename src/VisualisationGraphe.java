@@ -79,12 +79,12 @@ class GraphePanel extends JPanel {
             return;
         }
 
-        // ✅ Réinitialiser les couleurs des boutons
+        // Réinitialiser les couleurs des boutons
         for (JButton bouton : boutonsColoration) {
             bouton.setBackground(null);
         }
 
-        // ✅ Appliquer la coloration
+        // Appliquer la coloration
         switch (methode) {
             case "backtracking":
                 colorationGraphe.colorationBacktracking(0, 6);
